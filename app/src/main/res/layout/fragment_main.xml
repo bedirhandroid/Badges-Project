@@ -1,7 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/board_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="@dimen/margin_s3"
+        android:layout_marginHorizontal="@dimen/margin_s7"
+        app:layout_constraintBottom_toTopOf="@id/vp_board"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_flag" />
+
+            <TextView
+                android:id="@+id/tv_total_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_s7"
+                android:gravity="center"
+                tools:text="2.0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_s12"
+                android:fontFamily="@font/gotham_bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/margin_s3"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all_badges"
+                android:fontFamily="@font/gotham_book"
+                android:textSize="@dimen/text_size_s8"
+                android:layout_marginTop="@dimen/margin_s3"
+                android:textColor="@color/dark_solid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/rb_total"
+                style="@style/CustomRatingBarStyle"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:rating="3"
+                android:stepSize="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_total_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="50 tane"
+                android:fontFamily="@font/gotham_medium"
+                android:textSize="@dimen/text_size_s6"
+                android:textColor="@color/black_30"
+                app:layout_constraintBottom_toBottomOf="@+id/rb_total"
+                app:layout_constraintStart_toEndOf="@+id/rb_total" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_board"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/tab_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/board_container" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_s9"
+        app:layout_constraintBottom_toTopOf="@id/rv_comments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vp_board"
+        app:tabBackground="@drawable/tab_pager_selector"
+        app:tabIndicatorHeight="0dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_comments"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_s7"
+        tools:listitem="@layout/comment_row"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

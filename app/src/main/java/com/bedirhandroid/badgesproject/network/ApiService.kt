@@ -1,8 +1,8 @@
 package com.bedirhandroid.badgesproject.network
 
-import com.bedirhandroid.badgesproject.RequestModel
 import com.bedirhandroid.badgesproject.models.badge.BadgeResponse
 import com.bedirhandroid.badgesproject.models.praise.PraiseResponse
+import com.bedirhandroid.badgesproject.models.request.RequestModel
 import retrofit2.http.Body
 import retrofit2.http.POST
 

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.BadgesProject" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -18,5 +18,19 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="CustomRatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_rating</item>
+        <item name="android:isIndicator">true</item>
+        <item name="android:minHeight">15dip</item>
+        <item name="android:maxHeight">47dip</item>
+    </style>
+
+    <style name="CustomMiniRatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_rating_mini</item>
+        <item name="android:isIndicator">true</item>
+        <item name="android:minHeight">15dip</item>
+        <item name="android:maxHeight">47dip</item>
     </style>
 </resources>

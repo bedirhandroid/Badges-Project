@@ -31,7 +31,7 @@ class PraiseUseCaseTest : BaseUseCaseTest<PraiseUseCase>() {
         useCase(Unit).test {
             val item = expectItem()
 
-            Truth.assertThat(item.row.first().id).isEqualTo(response.row.first().id)
+            Truth.assertThat(item.row?.first()?.id).isEqualTo(response.row.first().id)
             expectComplete()
         }
     }

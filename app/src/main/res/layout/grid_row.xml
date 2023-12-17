@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginStart="@dimen/margin_s3"
+    android:layout_marginTop="@dimen/margin_s3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_badge"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_sorun_cozucu"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_solid"
+                android:fontFamily="@font/gotham_book"
+                android:textSize="@dimen/text_size_s6"
+                tools:text="Sorun Çözücü"/>
+
+            <RatingBar
+                android:id="@+id/rv_rating"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                tools:rating="5"
+                style="@style/CustomMiniRatingBarStyle"/>
+
+            <TextView
+                android:id="@+id/tv_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham_medium"
+                android:textColor="@color/black_30"
+                android:textSize="@dimen/text_size_s6"
+                tools:text="10 Tane"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

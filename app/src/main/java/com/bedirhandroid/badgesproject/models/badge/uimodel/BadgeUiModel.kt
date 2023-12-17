@@ -1,12 +1,8 @@
 package com.bedirhandroid.badgesproject.models.badge.uimodel
 
-import com.bedirhandroid.badgesproject.models.xxx.BadgeIconModel
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
 data class BadgeUiModel(
-    @SerializedName("BadgeIcon")
-    val icon: BadgeIconModel? = null,
     @SerializedName("Id")
     val id: Int? = null,
     @SerializedName("Title")

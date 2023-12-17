@@ -50,24 +50,13 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.databinding:viewbinding:8.2.0")
     implementation("junit:junit:4.13.2")
+    implementation("androidx.test.ext:junit-ktx:1.1.5")
 
     val navVersion = "2.7.5"
-    val pagingVersion = "3.2.1"
-
-    //PAGING
-    implementation ("androidx.paging:paging-runtime-ktx:$pagingVersion")
 
     //HILT
     implementation ("com.google.dagger:hilt-android:2.49")
     kapt ("com.google.dagger:hilt-compiler:2.49")
-
-    // For instrumentation tests
-    androidTestImplementation  ("com.google.dagger:hilt-android-testing:2.49")
-    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.49")
-
-    // For local unit tests
-    testImplementation ("com.google.dagger:hilt-android-testing:2.49")
-    kaptTest ("com.google.dagger:hilt-compiler:2.49")
 
     //NAV COMPONENT
     implementation ("androidx.navigation:navigation-fragment-ktx:$navVersion")
@@ -83,19 +72,11 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
-    //GLIDE
-    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    //TEST MOCK ect.
+    kaptTest ("com.google.dagger:hilt-compiler:2.49")
 
-    //LOTTIE
-    implementation ("com.airbnb.android:lottie:5.0.3")
+    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.49")
 
-    //SERIALIZABLE
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-
-    //MOCK
-    testImplementation("io.mockk:mockk:1.12.0")
-
-    //TEST
     implementation("androidx.arch.core:core-testing:2.2.0")
     implementation("io.mockk:mockk:1.12.0")
     implementation("app.cash.turbine:turbine:0.5.2")
@@ -108,9 +89,12 @@ dependencies {
     testImplementation("androidx.test:runner:1.5.2")
     testImplementation("app.cash.turbine:turbine:0.5.2")
     testImplementation("com.google.truth:truth:1.1.5")
+    testImplementation ("com.google.dagger:hilt-android-testing:2.49")
+    testImplementation("io.mockk:mockk:1.12.0")
 
     androidTestImplementation("app.cash.turbine:turbine:0.5.2")
     androidTestImplementation("com.google.truth:truth:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation  ("com.google.dagger:hilt-android-testing:2.49")
 
 }

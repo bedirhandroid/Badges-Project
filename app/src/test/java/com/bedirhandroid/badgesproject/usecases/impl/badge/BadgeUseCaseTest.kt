@@ -1,15 +1,15 @@
 package com.bedirhandroid.badgesproject.usecases.impl.badge
 
+import app.cash.turbine.test
 import com.bedirhandroid.badgesproject.base.BaseUseCaseTest
 import com.bedirhandroid.badgesproject.base.Repository
+import com.google.common.truth.Truth
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import kotlin.time.ExperimentalTime
-import app.cash.turbine.test
-import com.google.common.truth.Truth
 
 
 class BadgeUseCaseTest :BaseUseCaseTest<BadgeUseCase>() {

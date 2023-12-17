@@ -1,8 +1,8 @@
 package com.bedirhandroid.badgesproject.base
 
-import com.bedirhandroid.badgesproject.RequestModel
 import com.bedirhandroid.badgesproject.models.badge.BadgeResponse
 import com.bedirhandroid.badgesproject.models.praise.PraiseResponse
+import com.bedirhandroid.badgesproject.models.request.RequestModel
 import com.bedirhandroid.badgesproject.network.ApiService
 import com.bedirhandroid.badgesproject.util.Constants
 import kotlinx.coroutines.flow.Flow

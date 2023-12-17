@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.bedirhandroid.badgesproject.base.ext.getBindingMethod
 import com.bedirhandroid.badgesproject.base.ext.getViewModelByLazy
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.lang.reflect.ParameterizedType
@@ -56,18 +56,18 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : HiltFragment
     }
 
     //viewModel scope
-    protected inline fun viewModelScope(action: VM.() -> Unit) {
+    protected inline fun viewModel(action: VM.() -> Unit) {
         action(viewModel)
     }
 
     //binding scope
-    protected inline fun viewBindingScope(action: VB.() -> Unit) {
+    protected inline fun viewBinding(action: VB.() -> Unit) {
         action(binding)
     }
 
     private fun observeBaseLiveData() {
         //observe baseViewModel LiveData
-        viewModelScope {
+        viewModel {
             this.errorLiveData.observe(viewLifecycleOwner) {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             }
@@ -81,6 +81,14 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : HiltFragment
                 if (progressBar.isProgressShown()) {
                     progressBar.hide()
                 }
+            }
+        }
+    }
+
+    inline fun <T>StateFlow<T>.collectStateFlowData(crossinline block: suspend T.() -> Unit) {
+        lifecycleScope.launch {
+            this@collectStateFlowData.collectLatest {
+                block(it)
             }
         }
     }

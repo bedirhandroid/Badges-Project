@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.bedirhandroid.badgesproject.MainFragment"
+        android:name="com.bedirhandroid.badgesproject.ui.fragments.MainFragment"
         android:label="MainFragment" />
 </navigation>

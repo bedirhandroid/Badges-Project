@@ -9,7 +9,8 @@ data class Row(
     val relatedPerson: List<RelatedPerson>? = null,
     @SerializedName("PraiseRating")
     val praiseRating : Int? = null,
-    val badgePraiseModel: BadgePraiseModel? = null,
+    @SerializedName("Badge")
+    val badgePraiseModel: List<BadgePraiseModel>? = null,
     @SerializedName("Message")
     val message: String? = null,
     @SerializedName("Created.")

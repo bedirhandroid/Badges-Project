@@ -3,17 +3,10 @@ package com.bedirhandroid.badgesproject.base
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.bedirhandroid.badgesproject.base.ext.getActivityViewModel
 import com.bedirhandroid.badgesproject.base.ext.getBindingMethod
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.launch
+import com.bedirhandroid.badgesproject.util.showAlert
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : HiltActivity() {
@@ -58,7 +51,7 @@ abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : HiltActivity
     private fun observeBaseLiveData() {
         viewModelScope {
             this.errorLiveData.observe(this@BaseActivity) {
-                Toast.makeText(this@BaseActivity, it, Toast.LENGTH_SHORT).show()
+                it.showAlert(this@BaseActivity)
             }
             this.showProgress.observe(this@BaseActivity) {
                 if (it) {

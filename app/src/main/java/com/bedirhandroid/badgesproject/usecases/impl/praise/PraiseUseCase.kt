@@ -17,7 +17,7 @@ class PraiseUseCase@Inject constructor(private val repo: Repository) : BaseFlowU
                         id = _row.id,
                         relatedPerson = _row.relatedPerson?.firstOrNull(),
                         praiseRating = _row.praiseRating,
-                        badgePraiseModel = _row.badgePraiseModel,
+                        badgePraiseModel = _row.badgePraiseModel?.firstOrNull() ,
                         message = _row.message,
                         createdDate = _row.createdDate
                     )
