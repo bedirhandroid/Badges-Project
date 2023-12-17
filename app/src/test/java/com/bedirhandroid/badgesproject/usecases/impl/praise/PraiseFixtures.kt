@@ -21,10 +21,12 @@ object PraiseFixtures {
                         )
                     ),
                     praiseRating = 4,
-                    badgePraiseModel = BadgePraiseModel(
-                        isSecretFieldValue = true,
-                        lookupId = 1,
-                        lookupValue = "mock-look-up-value"
+                    badgePraiseModel = listOf(
+                        BadgePraiseModel(
+                            isSecretFieldValue = true,
+                            lookupId = 1,
+                            lookupValue = "mock-look-up-value"
+                        )
                     ),
                     message = "Message",
                     createdDate = "Mock Date"
@@ -41,10 +43,13 @@ object PraiseFixtures {
                         )
                     ),
                     praiseRating = 5,
-                    badgePraiseModel = BadgePraiseModel(
-                        isSecretFieldValue = true,
-                        lookupId = 2,
-                        lookupValue = "2mock-look-up-value"
+                    badgePraiseModel = listOf(
+                        BadgePraiseModel(
+                            isSecretFieldValue = true,
+                            lookupId = 2,
+                            lookupValue = "2mock-look-up-value"
+
+                        )
                     ),
                     message = "2Message",
                     createdDate = "2Mock Date"

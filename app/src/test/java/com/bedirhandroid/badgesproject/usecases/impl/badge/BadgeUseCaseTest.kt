@@ -29,10 +29,10 @@ class BadgeUseCaseTest :BaseUseCaseTest<BadgeUseCase>() {
 
         useCase(Unit).test {
             val item = expectItem()
-            val parsedIcon = response.value?.first()?.parseBadgeIcon()
+            val type = response.value?.first()?.type
 
             Truth.assertThat(item.value?.first()?.title).isEqualTo(response.value?.first()?.title)
-            Truth.assertThat(item.value?.first()?.icon).isEqualTo(parsedIcon)
+            Truth.assertThat(item.value?.first()?.type).isEqualTo(type)
             expectComplete()
         }
     }
