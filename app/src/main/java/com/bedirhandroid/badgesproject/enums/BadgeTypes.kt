@@ -9,11 +9,12 @@ enum class BadgeTypes(val lookupId: Int) {
     TAKIM_OYUNCUSU(8),
     TESEKKUR(9),
     YARATICI(10),
-    YENILIKCI(11);
+    YENILIKCI(11),
+    UNKNOWN(-1);
 
     companion object {
-        fun fromInt(value: Int): BadgeTypes? {
-            return values().find { it.lookupId == value }
+        fun fromInt(value: Int): BadgeTypes {
+            return values().find { it.lookupId == value } ?: UNKNOWN
         }
     }
 }

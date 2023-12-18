@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bedirhandroid.badgesproject.databinding.ViewPagerRowBinding
-import com.bedirhandroid.badgesproject.models.badge.uimodel.BadgeUiModel
-import com.bedirhandroid.badgesproject.models.praise.PraiseWithBadgeTypeModel
+import com.bedirhandroid.badgesproject.network.models.badge.uimodel.BadgeUiModel
+import com.bedirhandroid.badgesproject.network.models.praise.PraiseWithBadgeTypeModel
 
 class ViewPagerAdapter(
     private val list: List<List<BadgeUiModel>>,

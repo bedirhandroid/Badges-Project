@@ -10,8 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.bedirhandroid.badgesproject.base.ext.getBindingMethod
 import com.bedirhandroid.badgesproject.base.ext.getViewModelByLazy
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.lang.reflect.ParameterizedType
 
@@ -87,7 +87,15 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : HiltFragment
 
     inline fun <T>StateFlow<T>.collectStateFlowData(crossinline block: suspend T.() -> Unit) {
         lifecycleScope.launch {
-            this@collectStateFlowData.collectLatest {
+            this@collectStateFlowData.collect {
+                block(it)
+            }
+        }
+    }
+
+    inline fun <T> Flow<T>.collectFlowData(crossinline block: suspend T.() -> Unit) {
+        lifecycleScope.launch {
+            this@collectFlowData.collect {
                 block(it)
             }
         }

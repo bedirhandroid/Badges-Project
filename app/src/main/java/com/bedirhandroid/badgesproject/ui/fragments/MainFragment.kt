@@ -5,9 +5,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.bedirhandroid.badgesproject.R
 import com.bedirhandroid.badgesproject.base.BaseFragment
 import com.bedirhandroid.badgesproject.databinding.FragmentMainBinding
-import com.bedirhandroid.badgesproject.models.badge.uimodel.BadgeUiModel
-import com.bedirhandroid.badgesproject.models.praise.PraiseWithBadgeTypeModel
-import com.bedirhandroid.badgesproject.models.praise.uimodel.RowUi
+import com.bedirhandroid.badgesproject.network.models.badge.uimodel.BadgeUiModel
+import com.bedirhandroid.badgesproject.network.models.praise.PraiseWithBadgeTypeModel
+import com.bedirhandroid.badgesproject.network.models.praise.uimodel.RowUi
 import com.bedirhandroid.badgesproject.ui.adapters.CommentsAdapter
 import com.bedirhandroid.badgesproject.ui.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
@@ -22,36 +22,16 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainFragmentVM>() {
         viewModel.commentsDataList?.get(_pos)?.map {
             it.value
         }.also {
-            if (it != null) {
-                initCommentsAdapter(it)
-            }
+            it?.let(::initCommentsAdapter)
         }
     }
 
     private val praiseTotalTextObserver = Observer<String> {
-        binding.tvTotalRating.text = it.replace(".",",")
-    }
-
-    private val praiseWithBadgeObserver = Observer<List<PraiseWithBadgeTypeModel>> {
-        viewModel {
-            it.map { _praise ->
-                sumTotalSize += _praise.rate.size
-                _praise.rate.map { _int ->
-                    sumTotalRate += _int
-                }
-            }.also {
-                binding.tvTotalCount.text = getString(R.string.txt_dynamic_units, sumTotalSize)
-                binding.rbTotal.rating = sumTotalRate / sumTotalSize.toFloat()
-            }
-        }
+        binding.tvTotalRating.text = it.replace(".", ",")
     }
 
 
-    override fun initView() {
-        viewBinding {
-
-        }
-    }
+    override fun initView() {}
 
     override fun initListeners() {
         viewBinding {
@@ -75,11 +55,21 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainFragmentVM>() {
             }
             badgeStateFlow.collectStateFlowData {
                 this?.let { _pair ->
-                    _pair.second?.let {
-                        _pair.first?.value?.let { it1 ->
+                    _pair.second?.let { _praiseList ->
+                        _praiseList.map { _praise ->
+                            sumTotalSize += _praise.rate.size
+                            _praise.rate.map { _int ->
+                                sumTotalRate += _int
+                            }
+                        }.also {
+                            binding.tvTotalCount.text =
+                                getString(R.string.txt_dynamic_units, sumTotalSize)
+                            binding.rbTotal.rating = sumTotalRate / sumTotalSize.toFloat()
+                        }
+                        _pair.first?.value?.let { _badgeUiModelList ->
                             initViewPagerAdapter(
-                                it1,
-                                it
+                                _badgeUiModelList,
+                                _praiseList
                             )
                         }
                     }
@@ -87,7 +77,6 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainFragmentVM>() {
             }
             currentPage.observe(viewLifecycleOwner, currentPageObserver)
             praiseTotalText.observe(viewLifecycleOwner, praiseTotalTextObserver)
-            praiseWithBadge.observe(viewLifecycleOwner, praiseWithBadgeObserver)
         }
     }
 

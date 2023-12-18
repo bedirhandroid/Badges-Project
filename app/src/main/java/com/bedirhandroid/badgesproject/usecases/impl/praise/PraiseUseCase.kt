@@ -2,13 +2,13 @@ package com.bedirhandroid.badgesproject.usecases.impl.praise
 
 import com.bedirhandroid.badgesproject.base.BaseFlowUseCase
 import com.bedirhandroid.badgesproject.base.Repository
-import com.bedirhandroid.badgesproject.models.praise.uimodel.PraiseUi
-import com.bedirhandroid.badgesproject.models.praise.uimodel.RowUi
+import com.bedirhandroid.badgesproject.network.models.praise.uimodel.PraiseUi
+import com.bedirhandroid.badgesproject.network.models.praise.uimodel.RowUi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class PraiseUseCase@Inject constructor(private val repo: Repository) : BaseFlowUseCase<Unit,PraiseUi>(){
+class PraiseUseCase@Inject constructor(private val repo: Repository) : BaseFlowUseCase<Unit, PraiseUi>(){
     override fun execute(params: Unit): Flow<PraiseUi> =
         repo.getPraises().map {
             PraiseUi(

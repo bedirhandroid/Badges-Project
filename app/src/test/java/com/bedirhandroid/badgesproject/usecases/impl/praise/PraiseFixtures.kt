@@ -1,9 +1,9 @@
 package com.bedirhandroid.badgesproject.usecases.impl.praise
 
-import com.bedirhandroid.badgesproject.models.praise.BadgePraiseModel
-import com.bedirhandroid.badgesproject.models.praise.PraiseResponse
-import com.bedirhandroid.badgesproject.models.praise.RelatedPerson
-import com.bedirhandroid.badgesproject.models.praise.Row
+import com.bedirhandroid.badgesproject.network.models.praise.BadgePraiseModel
+import com.bedirhandroid.badgesproject.network.models.praise.PraiseResponse
+import com.bedirhandroid.badgesproject.network.models.praise.RelatedPerson
+import com.bedirhandroid.badgesproject.network.models.praise.Row
 
 object PraiseFixtures {
     fun getPraiseResponse() =

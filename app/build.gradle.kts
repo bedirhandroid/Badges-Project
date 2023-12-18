@@ -91,10 +91,12 @@ dependencies {
     testImplementation("com.google.truth:truth:1.1.5")
     testImplementation ("com.google.dagger:hilt-android-testing:2.49")
     testImplementation("io.mockk:mockk:1.12.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0-RC")
 
     androidTestImplementation("app.cash.turbine:turbine:0.5.2")
     androidTestImplementation("com.google.truth:truth:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation  ("com.google.dagger:hilt-android-testing:2.49")
+    androidTestImplementation  ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0-RC")
 
 }

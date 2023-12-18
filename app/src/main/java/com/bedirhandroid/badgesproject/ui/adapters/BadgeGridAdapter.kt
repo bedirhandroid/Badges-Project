@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bedirhandroid.badgesproject.R
 import com.bedirhandroid.badgesproject.databinding.GridRowBinding
-import com.bedirhandroid.badgesproject.models.badge.uimodel.BadgeUiModel
-import com.bedirhandroid.badgesproject.models.praise.PraiseWithBadgeTypeModel
+import com.bedirhandroid.badgesproject.network.models.badge.uimodel.BadgeUiModel
+import com.bedirhandroid.badgesproject.network.models.praise.PraiseWithBadgeTypeModel
 import com.bedirhandroid.badgesproject.util.loadImageByType
 
 class BadgeGridAdapter(

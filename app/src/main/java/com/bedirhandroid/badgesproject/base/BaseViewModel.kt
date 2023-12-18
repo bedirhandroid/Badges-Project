@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -60,7 +61,7 @@ abstract class BaseViewModel : ViewModel() {
         flow2: Flow<R>,
         crossinline block: suspend (first: T, sec: R) -> Unit
     ) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.Unconfined) {
             flow1.zip(flow2) { value1, value2 ->
                 block(value1, value2)
             }.onStart {

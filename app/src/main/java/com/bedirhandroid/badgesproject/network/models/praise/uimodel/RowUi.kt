@@ -1,9 +1,9 @@
-package com.bedirhandroid.badgesproject.models.praise.uimodel
+package com.bedirhandroid.badgesproject.network.models.praise.uimodel
 
 import android.content.Context
 import com.bedirhandroid.badgesproject.R
-import com.bedirhandroid.badgesproject.models.praise.BadgePraiseModel
-import com.bedirhandroid.badgesproject.models.praise.RelatedPerson
+import com.bedirhandroid.badgesproject.network.models.praise.BadgePraiseModel
+import com.bedirhandroid.badgesproject.network.models.praise.RelatedPerson
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId

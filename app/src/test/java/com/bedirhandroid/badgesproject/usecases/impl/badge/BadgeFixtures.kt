@@ -1,7 +1,7 @@
 package com.bedirhandroid.badgesproject.usecases.impl.badge
 
-import com.bedirhandroid.badgesproject.models.badge.Badge
-import com.bedirhandroid.badgesproject.models.badge.BadgeResponse
+import com.bedirhandroid.badgesproject.network.models.badge.Badge
+import com.bedirhandroid.badgesproject.network.models.badge.BadgeResponse
 
 object BadgeFixtures {
     fun getBadgeResponse() =

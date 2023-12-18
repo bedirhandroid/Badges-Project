@@ -1,4 +1,4 @@
-package com.bedirhandroid.badgesproject.models.praise
+package com.bedirhandroid.badgesproject.network.models.praise
 
 import com.google.gson.annotations.SerializedName
 

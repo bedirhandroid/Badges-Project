@@ -3,7 +3,10 @@
     <style name="Base.Theme.BadgesProject" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="colorPrimary"> @color/white</item>
     </style>
+
 
     <style name="Theme.BadgesProject" parent="Base.Theme.BadgesProject" />
 
