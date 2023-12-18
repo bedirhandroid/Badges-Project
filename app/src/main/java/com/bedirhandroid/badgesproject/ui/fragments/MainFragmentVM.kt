@@ -10,6 +10,7 @@ import com.bedirhandroid.badgesproject.network.models.praise.uimodel.PraiseUi
 import com.bedirhandroid.badgesproject.network.models.praise.uimodel.RowUi
 import com.bedirhandroid.badgesproject.usecases.impl.badge.BadgeUseCase
 import com.bedirhandroid.badgesproject.usecases.impl.praise.PraiseUseCase
+import com.bedirhandroid.badgesproject.util.groupList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -42,16 +43,7 @@ class MainFragmentVM @Inject constructor(
     private fun getBadgeAndPraiseList() {
         viewModelScope.launch {
             zipFlows(badgeUseCase.invoke(Unit), (praiseUseCase.invoke(Unit))) { badges, praises ->
-                praises.row?.filter { it.badgePraiseModel?.lookupId in 3..11 }
-                    ?.sortedBy { it.badgePraiseModel?.lookupId }
-                    ?.groupBy { it.badgePraiseModel?.lookupId }?.map { (type, listItem) ->
-                        mutableListPraiseBadgeModel.add(
-                            PraiseWithBadgeTypeModel(
-                                rate = listItem.map { it.praiseRating ?: 0 },
-                                type = BadgeTypes.fromInt(type ?: -1)
-                            )
-                        )
-                    }
+                mutableListPraiseBadgeModel.addAll(praises.groupList())
                 praises.row?.map {
                     totalRating += it.praiseRating ?: 0
                 }

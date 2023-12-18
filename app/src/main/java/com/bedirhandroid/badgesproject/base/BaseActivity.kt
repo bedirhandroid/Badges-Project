@@ -39,17 +39,17 @@ abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : HiltActivity
         setContentView(binding.root)
     }
 
-    protected inline fun viewModelScope(action: VM.() -> Unit) {
+    protected inline fun viewModel(action: VM.() -> Unit) {
         action(viewModel)
     }
 
     //binding scope
-    protected inline fun viewBindingScope(action: VB.() -> Unit) {
+    protected inline fun viewBinding(action: VB.() -> Unit) {
         action(binding)
     }
 
     private fun observeBaseLiveData() {
-        viewModelScope {
+        viewModel {
             this.errorLiveData.observe(this@BaseActivity) {
                 it.showAlert(this@BaseActivity)
             }

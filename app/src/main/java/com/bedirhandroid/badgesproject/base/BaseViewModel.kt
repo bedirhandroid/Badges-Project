@@ -20,28 +20,6 @@ abstract class BaseViewModel : ViewModel() {
     val errorLiveData: MutableLiveData<String> = MutableLiveData()
     val showProgress: MutableLiveData<Boolean> = MutableLiveData()
 
-    protected inline fun sendRequest(
-        crossinline block: suspend CoroutineScope.() -> Unit
-    ) {
-        viewModelScope.launch {
-            showProgress.postValue(true)
-            try {
-                block()
-            } catch (exception: Exception) {
-                when (exception) {
-                    is TimeoutException -> errorLiveData.postValue("ErrorMessages.TIME_OUT")
-                    is ProtocolException -> errorLiveData.postValue("ErrorMessages.TRY_AGAIN")
-                    is EOFException -> errorLiveData.postValue("ErrorMessages.ERROR_EOFE")
-                    else -> {
-                        errorLiveData.postValue("ERROR")
-                    }
-                }
-            } finally {
-                showProgress.postValue(false)
-            }
-        }
-    }
-
     inline fun <T> Flow<T>.collectFlow(crossinline block: suspend T.() -> Unit) {
         viewModelScope.launch {
             this@collectFlow.onStart {

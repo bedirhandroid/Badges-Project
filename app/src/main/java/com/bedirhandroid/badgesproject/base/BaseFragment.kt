@@ -92,12 +92,4 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : HiltFragment
             }
         }
     }
-
-    inline fun <T> Flow<T>.collectFlowData(crossinline block: suspend T.() -> Unit) {
-        lifecycleScope.launch {
-            this@collectFlowData.collect {
-                block(it)
-            }
-        }
-    }
 }
